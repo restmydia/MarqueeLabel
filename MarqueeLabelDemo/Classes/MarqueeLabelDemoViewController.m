@@ -144,11 +144,11 @@
     
     [self.view addSubview:continuousLabel2];
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseTap:)];
-    tapRecognizer.numberOfTapsRequired = 1;
-    tapRecognizer.numberOfTouchesRequired = 1;
-    [continuousLabel2 addGestureRecognizer:tapRecognizer];
-    continuousLabel2.userInteractionEnabled = YES; // Don't forget this, otherwise the gesture recognizer will fail (UILabel has this as NO by default)
+//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseTap:)];
+//    tapRecognizer.numberOfTapsRequired = 1;
+//    tapRecognizer.numberOfTouchesRequired = 1;
+//    [continuousLabel2 addGestureRecognizer:tapRecognizer];
+//    continuousLabel2.userInteractionEnabled = YES; // Don't forget this, otherwise the gesture recognizer will fail (UILabel has this as NO by default)
     
 }
 

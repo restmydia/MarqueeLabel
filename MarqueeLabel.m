@@ -686,6 +686,16 @@ typedef void (^animationCompletionBlock)(void);
     }
 }
 
+- (void)labelWasTappedToPause:(UITapGestureRecognizer *)recognizer {
+    if (self.labelShouldScroll) {
+        if (self.isPaused) {
+            [self unpauseLabel];
+        }else{
+            [self pauseLabel];
+        }
+    }
+}
+
 #pragma mark - Modified UILabel Getters/Setters
 
 - (void)setFrame:(CGRect)frame {
@@ -891,6 +901,28 @@ typedef void (^animationCompletionBlock)(void);
     [self updateSublabelAndLocations];
 }
 
+- (void)setTapToPause:(BOOL)tapToPause{
+    if (_tapToPause == tapToPause) {
+        return;
+    }
+    
+    _tapToPause = tapToPause;
+    
+    if (_tapToPause) {
+        if (self.tapRecognizer) {
+            [self removeGestureRecognizer:self.tapRecognizer];
+        }
+        UITapGestureRecognizer *newTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelWasTappedToPause:)];
+        [self addGestureRecognizer:newTapRecognizer];
+        self.tapRecognizer = newTapRecognizer;
+        self.userInteractionEnabled = YES;
+    } else {
+        [self removeGestureRecognizer:self.tapRecognizer];
+        self.tapRecognizer = nil;
+        self.userInteractionEnabled = NO;
+    }
+}
+
 - (void)setTapToScroll:(BOOL)tapToScroll {
     if (_tapToScroll == tapToScroll) {
         return;
@@ -899,6 +931,10 @@ typedef void (^animationCompletionBlock)(void);
     _tapToScroll = tapToScroll;
     
     if (_tapToScroll) {
+        if (self.tapRecognizer) {
+            [self removeGestureRecognizer:self.tapRecognizer];
+        }
+        
         UITapGestureRecognizer *newTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelWasTapped:)];
         [self addGestureRecognizer:newTapRecognizer];
         self.tapRecognizer = newTapRecognizer;

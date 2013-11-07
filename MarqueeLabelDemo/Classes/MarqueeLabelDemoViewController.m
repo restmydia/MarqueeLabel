@@ -132,6 +132,7 @@
     continuousLabel2.marqueeType = MLContinuous;
     continuousLabel2.animationCurve = UIViewAnimationOptionCurveLinear;
     continuousLabel2.continuousMarqueeExtraBuffer = 50.0f;
+    continuousLabel2.tapToPause = YES;
     continuousLabel2.numberOfLines = 1;
     continuousLabel2.opaque = NO;
     continuousLabel2.enabled = YES;
@@ -143,12 +144,13 @@
     continuousLabel2.text = @"This is another long label that scrolls continuously with a custom space between labels! You can also tap it to pause and unpause it!";
     
     [self.view addSubview:continuousLabel2];
+
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseTap:)];
-    tapRecognizer.numberOfTapsRequired = 1;
-    tapRecognizer.numberOfTouchesRequired = 1;
-    [continuousLabel2 addGestureRecognizer:tapRecognizer];
-    continuousLabel2.userInteractionEnabled = YES; // Don't forget this, otherwise the gesture recognizer will fail (UILabel has this as NO by default)
+//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseTap:)];
+//    tapRecognizer.numberOfTapsRequired = 1;
+//    tapRecognizer.numberOfTouchesRequired = 1;
+//    [continuousLabel2 addGestureRecognizer:tapRecognizer];
+//    continuousLabel2.userInteractionEnabled = YES; // Don't forget this, otherwise the gesture recognizer will fail (UILabel has this as NO by default)
     
 }
 

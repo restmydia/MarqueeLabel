@@ -106,6 +106,12 @@ typedef enum {
  */
 @property (nonatomic, assign) BOOL tapToScroll;
 
+/**
+ If YES, when tapped the label will toggle between scroll and pause.
+ @NOTE: Do not set this varable together with tapToScroll.
+ */
+@property (nonatomic, assign) BOOL tapToPause;
+
 
 // Read-only properties for state
 @property (nonatomic, assign, readonly) BOOL isPaused;
